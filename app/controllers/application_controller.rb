@@ -7,10 +7,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret","password_security"
   end
 
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-  end
 
   get '/' do
     erb :index
@@ -79,7 +75,7 @@ class ApplicationController < Sinatra::Base
     redirect to :"/tweets/#{@tweet.id}"
   end
   post '/signup' do
-    # binding.pry
+    binding.pry
     if params[:username].empty? || params[:email].empty? || params[:password].empty?
       redirect to :'/signup'
     else
